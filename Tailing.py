@@ -62,3 +62,4 @@ s='{"'+s.replace('|','","').replace('=','":"')+'"}'
 s=json.loads(s)
 print(s)
 
+
