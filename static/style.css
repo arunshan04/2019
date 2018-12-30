@@ -1,0 +1,63 @@
+.ui-jqgrid,
+.ui-jqgrid .ui-jqgrid-view,
+.ui-jqgrid .ui-jqgrid-pager,
+.ui-jqgrid .ui-pg-input {
+    font-size: 11px;
+}
+
+
+
+.ui-jqgrid .ui-jqgrid-bdiv {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 8px;
+    overflow: auto;
+    text-align: center;
+    background-color: #EAECEE;
+}
+
+.ui-jqgrid .ui-pg-table {
+    position: relative;
+    padding: 1px 0;
+    width: auto;
+    margin: 0;
+    background-color: gray;
+}
+
+.ui-jqgrid {
+    position: relative;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 1px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+
+
+.ui-jqgrid .ui-jqgrid-hdiv {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: gray;
+}
+
+.ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+        text-align: center;
+
+}
+
+.ui-jqgrid  {
+  padding-top: 50px;
+  padding-left: 80px;
+  padding-right: 400px;
+    resize: both;
+    width: 400px;
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The jQuery library is a prerequisite for all jqSuite products -->
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/jquery.min.js"></script>
+    <!-- We support more than 40 localizations -->
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/trirand/i18n/grid.locale-en.js"></script>
+    <!-- This is the Javascript file of jqGrid -->
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/trirand/jquery.jqGrid.min.js"></script>
+    <!-- A link to a Boostrap  and jqGrid Bootstrap CSS siles-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.guriddo.net/demo//css/trirand/ui.jqgrid-bootstrap.css" />
+	<script>
+		$.jgrid.defaults.width = 780;
+		$.jgrid.defaults.responsive = true;
+		$.jgrid.defaults.styleUI = 'Bootstrap';
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/bootstrap-datepicker.js"></script>
+    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/bootstrap3-typeahead.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.guriddo.net/demo//css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+
+
+
+
+    <meta charset="utf-8" />
+    <title>jqGrid Loading Data - Toolbar Searching with Search Options</title>
+</head>
+<body>
+<div class="c1" style="margin-left:20px;width:715px">
+    <table id="jqGrid" ></table>
+    <div id="jqGridPager"></div>
+</div>
+	<script type="text/javascript">
+	function requestData(request_url,callback) {
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				content=xhr.responseText;
+				if(content != "" && (content)) {
+						callback(JSON.parse(content))
+						}
+				else{
+					callback(false)
+				}
+			}
+		}
+		xhr.open('GET',request_url,true);
+		xhr.send(null);
+	};
+
+       $(document).ready(function () {
+	     requestData('data',function(data){
+	     if(data !==false ) {
+            $("#jqGrid").jqGrid({
+				datastr: data.rows,
+                mtype: "GET",
+				styleUI : 'Bootstrap',
+                datatype: "jsonstring",
+                rowNum:data.rows.length,
+                rowNum:10,
+                colModel: [
+                    { label: 'OrderID', name: 'OrderID', key: true, width: 75 },
+                    { label: 'Customer ID', name: 'CustomerID', width: 150 },
+                    { label: 'Order Date', name: 'OrderDate', width: 150 },
+                    { label: 'Freight', name: 'Freight', width: 150 },
+                    { label:'Ship Name', name: 'ShipName', width: 150 }
+                ],
+                pager: "#jqGridPager",
+                loadonce:true,
+                autowidth:true,
+                shrinkToFit:false,
+                rownumbers: true,
+                height:'auto',
+                width:'auto'
+            });
+            }
+			})
+        });
+ 
+
+    </script>
+
+
+</body>
+</html>
